@@ -7,3 +7,9 @@ version 0.1
 -reflect on user message
 
 -show temp and pressure 
+
+version 0.1 
+
+Replace commonplace text message with generated picture
+
+![alt text](https://github.com/AndreiAndrusyshyn/go-weatherbot-telegram/blob/master/img_readme/example.png)
