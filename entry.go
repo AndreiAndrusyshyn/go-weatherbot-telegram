@@ -1,13 +1,12 @@
 package main
 
 import (
+	"awesomeProject1/Picture_generate"
 	"awesomeProject1/weather_api"
-
 	"fmt"
 	"gopkg.in/syfaro/telegram-bot-api.v4"
 	"log"
 )
-
 
 func main() {
 	bot, err := tgbotapi.NewBotAPI("TOKEN")
@@ -27,8 +26,6 @@ func main() {
 		select {
 		case update := <-upd:
 
-			//UserName := update.Message.From.UserName
-
 			ChatID := update.Message.Chat.ID
 
 			Text := update.Message.Text
@@ -36,17 +33,14 @@ func main() {
 			parsed_weather := weather_api.Get_weather(Text)
 
 			temp := string(fmt.Sprintf("%.1f", parsed_weather.Main.Temp-273.15))
-			pressure :=string(fmt.Sprintf("%.0f", parsed_weather.Main.Pressure))
+			Picture_generate.Text = []string{temp + "°C", Text}
+			Picture_generate.Picture_generatd()
 
-			msg := tgbotapi.NewMessage(ChatID,
-				temp+" °C\n"+ pressure+"PAS" )
+			msg := tgbotapi.NewPhotoUpload(ChatID, "/root/go/src/awesomeProject1/result.jpg")
 
 			bot.Send(msg)
 
 		}
 	}
-
-//	parsed_wheather := wheather_api.get_weather()
-
 
 }
