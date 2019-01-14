@@ -8,7 +8,7 @@ version 0.1
 
 -show temp and pressure 
 
-version 0.1 
+version 0.2 
 
 Replace commonplace text message with generated picture
 
